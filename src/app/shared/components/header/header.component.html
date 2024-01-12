@@ -1,0 +1,41 @@
+<div class="header">
+  <div class="header__first">
+    <img class="logo" src="assets/images/logo.png" alt="کارگزاری دارا" />
+    <span class="title">سامانه معاملات برخط</span>
+  </div>
+  <div class="header__second">
+    <div class="time-box">
+      <span class="time">{{ marketDate | jalali }}</span>
+      <span> | </span>
+      <div class="period-box">
+        <span class="time"> {{ marketClock.clockStr | timeFormat }} </span>
+      </div>
+    </div>
+    <svg-icon
+      key="folder-connection"
+      fontSize="20px"
+      [color]="marketConnectionState === 1 ? '#55C095' : '#E20613'"
+    ></svg-icon>
+  </div>
+  <div class="header__third">
+    <div class="profile">
+      <svg-icon key="profile" fontSize="20px" color="#2F2F2F"></svg-icon>
+      <span> | </span>
+      <span>{{ 'FirstName' + " " + 'lastName' }}</span>
+      <svg-icon key="arrow-down" fontSize="12px" color="#2F2F2F"></svg-icon>
+    </div>
+
+    <div class="icons">
+      <div class="sms-box">
+        <div class="red-dot"></div>
+        <svg-icon key="sms" fontSize="20px" color="#2F2F2F"></svg-icon>
+      </div>
+      <svg-icon
+        key="notification-bing"
+        fontSize="20px"
+        color="#2F2F2F"
+      ></svg-icon>
+      <svg-icon key="logout" fontSize="20px" color="#2F2F2F"></svg-icon>
+    </div>
+  </div>
+</div>

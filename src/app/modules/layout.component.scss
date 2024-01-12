@@ -1,0 +1,32 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f9f9f9;
+  flex-direction: column;
+  &__header {
+    height: 64px;
+    width: calc(100vw - 63px);
+    background-color: #f9f9f9;
+  }
+
+  app-sidebar {
+    height: calc(100vh - 64px);
+    position: absolute;
+    right: 0;
+  }
+
+  &__main {
+    display: flex;
+    width: 100vw;
+    direction: ltr;
+    min-height: 100vh;
+    overflow-y: auto;
+    .body {
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      width: calc(100% - 62px);
+      direction: rtl;
+    }
+  }
+}

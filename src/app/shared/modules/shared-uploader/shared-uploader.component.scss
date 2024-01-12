@@ -1,0 +1,123 @@
+.avatar-upload {
+    position: relative;
+    margin: 36.73px auto;
+  
+    &__avatar-edit {
+      input {
+        top: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 12;
+        width: 158px;
+        height: 158px;
+        cursor: pointer;
+        overflow: hidden;
+        position: absolute;
+        margin: auto;
+      }
+    }
+  
+    &__avatar-preview {
+      border: 1px solid #e0e0e0;
+      padding: 3.93px;
+      border-radius: 100%;
+      z-index: 0;
+      #imagePreview {
+        width: 148.55px;
+        height: 148.55px;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+      }
+      .fade-bgc {
+        width: 94%;
+        height: 55px;
+        background-position: center center;
+        position: absolute;
+        bottom: 5px;
+        background-size: cover;
+      }
+  
+      .camera-icon {
+        width: 29.71px;
+        height: 28.22px;
+        background-position: center center;
+        position: absolute;
+        bottom: 14px;
+        background-size: cover;
+      }
+    }
+  
+    &__loading-upload {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 0.5rem;
+      .progress-bar {
+        position: absolute;
+        top: 79px;
+      }
+      h3,
+      span {
+        line-height: 1;
+      }
+  
+      section span {
+        font-size: 2em;
+        font-weight: 500;
+      }
+  
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+  
+      h3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5em;
+      }
+  
+      svg {
+        height: 186px;
+        width: 186px;
+        transform: rotate(-90deg);
+        position: absolute;
+      }
+      #progress,
+      #progress-border,
+      #track,
+      #border-track {
+        fill: transparent;
+      }
+      #progress {
+        stroke: #55c095;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke-dasharray: 1044;
+        stroke-dashoffset: 1044;
+        transform: rotateX(180deg) translateY(-185.5px);
+        transition: stroke-dashoffset ease-in 0.3s;
+      }
+      #progress-border {
+        stroke: #55c095;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke-dasharray: 500;
+      }
+      #track {
+        stroke: hsl(0, 0%, 100%);
+        stroke-width: 3px;
+      }
+      #border-track {
+        stroke: hsl(0, 0%, 93%);
+        stroke-width: 3px;
+      }
+    }
+  }
+  

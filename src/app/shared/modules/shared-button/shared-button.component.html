@@ -1,0 +1,26 @@
+<button
+  [type]="type"
+  (click)="onClickAction()"
+  [class]="'shared-button ' + 'shared-button--' + color"
+  [disabled]="disabled || isPending"
+  [ngClass]="{
+    'shared-button--outline': outline,
+    'shared-button--disabled': isPending || disabled
+  }"
+>
+  <div class="shared-button__icon" *ngIf="icon && !isPending">
+    <svg-icon [key]="icon" fontSize="16px" color="#fff"></svg-icon>
+  </div>
+  <span
+  [ngClass]="{
+    'shared-button--outline': outline,
+    'shared-button--disabled': isPending || disabled
+  }"
+  class="shared-button__title" *ngIf="!isPending">{{ title }}</span>
+  <img
+    class="shared-button__loading"
+    *ngIf="isPending"
+    [src]="loadingSrc"
+    alt="loading-rayan"
+  />
+</button>

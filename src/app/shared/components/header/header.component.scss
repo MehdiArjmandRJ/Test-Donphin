@@ -1,0 +1,111 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  width: 100vw;
+  direction: rtl;
+  padding-right: 63px;
+  padding-left: 6px;
+  &__first {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12.5px;
+    padding-right: 12.5px;
+    .logo {
+      width: 33.69px;
+      height: 45.99px;
+    }
+
+    .title {
+      color: #2f2f2f;
+      text-align: right;
+      font-family: IRANSansX;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 120%;
+    }
+  }
+
+  &__second {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    .time-box {
+      direction: ltr;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      .period-box {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        .period {
+          color: #32bbff;
+          text-align: right;
+          font-family: IRANSansXFaNum;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 120%;
+        }
+      }
+
+      .time {
+        color: #2f2f2f;
+        text-align: right;
+        font-feature-settings: "ss02" on;
+        /* body0 */
+        font-family: IRANSansX;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__third {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 38px;
+    padding-left: 24px;
+    svg-icon {
+      cursor: pointer;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+
+      .sms-box {
+        position: relative;
+        .red-dot {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          width: 8px;
+          height: 8px;
+          border-radius: 100%;
+          background-color: #e20613;
+        }
+      }
+    }
+  }
+}

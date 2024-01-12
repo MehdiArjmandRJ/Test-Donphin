@@ -1,0 +1,56 @@
+.shared-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 16px;
+  direction: rtl;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &__title{
+    cursor: pointer;
+  }
+  &--primary {
+    background:  #1C846A;
+    color: #fff;
+    font-weight: 900;
+  }
+  &--danger {
+    background: #e20613;
+    outline: 0;
+    border: 0;
+    color: #fff;
+    text-align: right;
+    font-feature-settings: "ss02" on;
+    font-family: IRANSansX;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+
+  &--success {
+    border-radius: 4px;
+    background:  #1C846A;
+    outline: 0;
+    border: 0;
+    min-width: 83px;
+    min-height: 32px;
+    color: #fff;
+    text-align: right;
+    font-feature-settings: "ss02" on;
+    font-family: IRANSansX;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+
+  &--disabled {
+    filter: brightness(0.7);
+    cursor: no-drop;
+  }
+}

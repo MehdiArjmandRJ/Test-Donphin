@@ -1,0 +1,202 @@
+<div *ngIf="inputForm" #calendar class="calendar-container">
+  <div class="calendar-container__inputs">
+    <div class="inner">
+      <div class="input-container" [formGroup]="inputForm.get(startInputName)">
+        <div class="label-container">
+          <label for="start">{{ startLabel }}</label>
+        </div>
+        <input
+          readonly
+          [value]="startInput"
+          (focus)="onFocusInput()"
+          [placeholder]="startPlaceholder"
+        />
+
+        <div
+          class="close-icon"
+          (click)="onClearSelected($event, 'start')"
+          *ngIf="inputForm.value[startInputName]"
+          [ngClass]="{ 'close-icon--end': mode === 'single' }"
+        >
+          <svg-icon key="folder" fontSize="50px"></svg-icon>
+        </div>
+
+        <small *ngIf="hasError(startInputName)">
+          {{ getErrors(startInputName) }}
+        </small>
+      </div>
+      <div
+        class="input-container"
+        *ngIf="mode === 'range'"
+        [formGroup]="inputForm.get(endInputName)"
+      >
+        <div class="label-container">
+          <label for="end">{{ endLabel }}</label>
+        </div>
+        <input
+          readonly
+          [value]="endInput"
+          (focus)="onFocusInput()"
+          [placeholder]="endPlaceholder"
+        />
+        <div
+          class="close-icon close-icon--end"
+          (click)="onClearSelected($event, 'end')"
+          *ngIf="inputForm.value[endInputName]"
+        >
+          <svg-icon key="folder" fontSize="50px"></svg-icon>
+        </div>
+
+        <small *ngIf="hasError(endInputName)">
+          {{ getErrors(endInputName) }}
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="calendar"
+    *ngIf="showCalendar"
+    [ngClass]="{ 'calendar--single': mode === 'single' }"
+  >
+    <div class="calendar__header">
+      <div class="change" (click)="onChangeLang()">
+        <span>{{ LANG === "fa" ? "تغییر به میلادی" : "تغییر به شمسی" }}</span>
+      </div>
+      <div class="title">
+        <span>{{ LANG === "fa" ? "تقویم شمسی" : "تقویم میلادی" }}</span>
+      </div>
+      <div class="today" (click)="onGoToday()">
+        <span>بروبه امروز</span>
+      </div>
+    </div>
+
+    <div
+      class="calendar__body"
+      [ngClass]="{ 'calendar__body--rtl': LANG === 'fa' }"
+    >
+      <div
+        class="arrow-indicator"
+        [ngClass]="{ 'arrow-indicator--en': LANG === 'en' }"
+      >
+        <svg-icon
+          [ngClass]="{ 'chevron-icon--disabled': checkPrevDisable() }"
+          class="chevron-icon"
+          key="folder"
+          fontSize="50px"
+          (click)="onPrevMonth()"
+        ></svg-icon>
+        <svg-icon
+          [ngClass]="{ 'chevron-icon--disabled': checkFrwDisable() }"
+          class="chevron-icon"
+          key="folder"
+          fontSize="50px"
+          (click)="onForwardMonth()"
+        ></svg-icon>
+      </div>
+
+      <div class="seprator" *ngIf="mode === 'range'"></div>
+
+      <div
+        class="calendar__single-month"
+        *ngFor="let month of calendarDates; let i = index"
+        [ngClass]="{ 'calendar__single-month--single': mode === 'single' }"
+      >
+        <div class="month-indicator">
+          <div class="month-title">
+            <span>{{ month.monthName }} {{ month.yearName }}</span>
+          </div>
+          <div class="weekdays">
+            <span *ngFor="let day of CONSTANTS.weekdays">{{ day }}</span>
+          </div>
+        </div>
+
+        <div class="date-grid">
+          <div
+            class="inner"
+            *ngFor="let day of month.monthDays; let i = index"
+            [ngClass]="{
+              'inner--isRtlEnd':
+                LANG === 'fa' && day.isEnd && startDate && day.isInCurrentMonth,
+              'inner--isLtrEnd':
+                LANG === 'en' && day.isEnd && startDate && day.isInCurrentMonth,
+              'inner--isBetween': day.isBetween && day.isInCurrentMonth
+            }"
+          >
+            <button
+              class="button"
+              *ngIf="day.isInCurrentMonth"
+              (click)="onSelectDate($event, day.date)"
+              [ngClass]="{
+                'button--single': mode === 'single',
+
+                'button--isEnd': day.isEnd,
+                'button--isPast': day.isPast,
+                'button--isFuture': day.isFuture,
+                'button--isStart': day.isStart,
+                'button--isFriday': day.isFriday,
+                'button--notCurrent': !day.isInCurrentMonth,
+                'button--isRtlFullEnd':
+                  LANG === 'fa' && day.isEnd && endDate && startDate,
+                'button--isLtrFullEnd':
+                  LANG === 'en' && day.isEnd && endDate && startDate,
+                'button--isRtlFullStart':
+                  LANG === 'fa' && day.isStart && startDate && endDate,
+                'button--isLtrFullStart':
+                  LANG === 'en' && day.isStart && endDate && startDate
+              }"
+            >
+              <div
+                class="cursor"
+                [ngClass]="{ 'cursor--isToday': day.isToday }"
+              ></div>
+              {{ day.dayNum }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer__selected-dates">
+        <div class="title">
+          <span>تاریخ انتخابی شما:</span>
+        </div>
+
+        <div class="selected">
+          <div *ngIf="startDate">
+            <svg-icon
+              class="clear-icon"
+              key="folder"
+              fontSize="50px"
+              (click)="onClearSelected($event, 'start')"
+            ></svg-icon>
+            <span>{{ startLabel }}</span>
+            &nbsp;
+            <span>{{ getSelectedDate(startDate) }}</span>
+          </div>
+
+          <div *ngIf="startDate && endDate" class="seprator"></div>
+
+          <div *ngIf="endDate && mode !== 'single'">
+            <svg-icon
+              class="clear-icon"
+              key="folder"
+              fontSize="50px"
+              (click)="onClearSelected($event, 'end')"
+            ></svg-icon>
+            <span>{{ endLabel }}</span>
+            &nbsp;
+            <span>{{ getSelectedDate(endDate) }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__action" *ngIf="mode === 'range'">
+        <app-shared-button
+          title="تایید"
+          (onClick)="showCalendar = false"
+        ></app-shared-button>
+      </div>
+    </div>
+  </div>
+</div>

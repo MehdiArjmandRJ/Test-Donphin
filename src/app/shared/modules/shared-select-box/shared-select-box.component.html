@@ -1,0 +1,45 @@
+<div class="main-input">
+  <div
+    [formGroup]="controlForm"
+    class="main-input__box"
+    *ngIf="controlForm; else useNgModel"
+  >
+    <ng-select
+      [minTermLength]="2"
+      [multiple]="multiSelect"
+      [items]="listItems"
+      [placeholder]="placeHolder"
+      [notFoundText]="notFoundText"
+      [formControlName]="controlName"
+      [searchable]="searchable"
+    >
+    </ng-select>
+  </div>
+
+  <ng-template #useNgModel>
+    <div class="main-input__box">
+      <ng-select
+        [multiple]="multiSelect"
+        [minTermLength]="2"
+        [items]="listItems"
+        [placeholder]="placeHolder"
+        [notFoundText]="notFoundText"
+        [(ngModel)]="value"
+        (change)="onChangeValue($event)"
+      >
+      </ng-select>
+    </div>
+  </ng-template>
+  <div class="main-input__error-container">
+    <div *ngIf="controlForm; else noForm">
+      <div class="error" *ngIf="checkErrors()">
+        <small>{{ getErrors() }}</small>
+      </div>
+    </div>
+    <ng-template #noForm>
+      <div class="error" *ngIf="errorMessage">
+        <small>{{ errorMessage }}</small>
+      </div>
+    </ng-template>
+  </div>
+</div>

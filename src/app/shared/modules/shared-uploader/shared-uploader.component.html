@@ -1,0 +1,38 @@
+<div class="avatar-upload">
+  <div class="avatar-upload__avatar-edit">
+    <input
+      type="file"
+      id="imageUpload"
+      accept=".png, .jpg, .jpeg"
+      #fileInput
+      (change)="uploadFile($event)"
+    />
+  </div>
+  <div class="avatar-upload__loading-upload">
+    <div class="avatar-upload__avatar-preview">
+      <div
+        id="imagePreview"
+        [style.backgroundImage]="'url(' + prevAvatar + ')'"
+      ></div>
+      <div
+        class="fade-bgc"
+        [style.backgroundImage]="'url(assets/icons/account-management/bgc.svg)'"
+      >
+        <div
+          class="camera-icon"
+          [style.backgroundImage]="
+            'url(assets/icons/account-management/camera.svg)'
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <svg>
+        <circle id="border-track" cx="93" cy="93" r="83"></circle>
+        <circle id="track" cx="93" cy="93" r="83"></circle>
+        <circle id="progress" cx="93" cy="93" r="83"></circle>
+      </svg>
+    </div>
+  </div>
+</div>

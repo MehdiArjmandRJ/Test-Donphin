@@ -1,0 +1,35 @@
+<aside
+  class="sidebar"
+  [@sliderState]="sliderToggleState"
+  [ngClass]="toggleSideBar ? 'open' : 'close'"
+>
+  <div class="sidebar__hamburger">
+    <div class="icon">
+      <svg-icon
+        [key]="toggleSideBar ? 'close-circle' : 'menu'"
+        fontSize="20px"
+        color="#fff"
+        (click)="onToggleSideBar()"
+      ></svg-icon>
+    </div>
+  </div>
+  <div class="sidebar__menues">
+    <div
+      class="item-box"
+      *ngFor="let menu of menus"
+      [ngClass]="menu.active ? 'active' : ''"
+      (click)="changeRoute(menu)"
+    >
+      <div class="item">
+        <svg-icon [key]="menu.icon" fontSize="20px" color="#fff"></svg-icon>
+        <span *ngIf="toggleSideBar" class="title">{{ menu.title }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar__help">
+    <div class="item">
+      <svg-icon key="message-question" fontSize="20px" color="#fff"></svg-icon>
+      <span *ngIf="toggleSideBar" class="title">راهنما</span>
+    </div>
+  </div>
+</aside>

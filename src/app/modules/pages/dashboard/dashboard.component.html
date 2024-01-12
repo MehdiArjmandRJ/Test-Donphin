@@ -1,0 +1,456 @@
+<div class="example">
+  <h1>Loading Value: {{ httpLoaderService.loadingState }}</h1>
+  <div>
+    <h1>State Example</h1>
+
+    <div>
+      <span i18n>تاریخ: </span>
+
+      <span>{{ "05/12/2023" | date }}</span>
+    </div>
+
+    <div>
+      <span i18n>قیمت: </span>
+
+      <span>{{ 123568 | currency }}</span>
+    </div>
+    <h2>See state in other route</h2>
+
+    <span i18n routerLink="/panel/messages"> پیام </span>
+  </div>
+
+  <div>
+    <h1>Shared Input Example</h1>
+
+    <app-shared-input
+      [(value)]="inputTest"
+      placeHolder="تست اینپوت"
+      type="text"
+    ></app-shared-input>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-input
+        [controlForm]="form"
+        controlName="name"
+        placeHolder="نام"
+        type="text"
+      ></app-shared-input>
+
+      <app-shared-input
+        [controlForm]="form"
+        controlName="password"
+        placeHolder="رمزعبور"
+        type="password"
+      ></app-shared-input>
+      <app-shared-button type="submit" title="Submit Form"></app-shared-button>
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Radio Button Example</h1>
+
+    <app-shared-radio
+      [(radioList)]="radioExampleDataOne"
+      errorMessage="نمایش خطا"
+    ></app-shared-radio>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-radio
+        [(radioList)]="radioExampleDataTwo"
+        [controlForm]="form"
+        controlName="radio1"
+      ></app-shared-radio>
+
+      <app-shared-radio
+        [(radioList)]="radioExampleDataThree"
+        [controlForm]="form"
+        controlName="radio2"
+      ></app-shared-radio>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Select Box Example</h1>
+    <app-shared-select-box
+      [(value)]="selectBoxValue"
+      placeHolder="یکی از موارد را انتخاب کنید"
+      [searchable]="true"
+      notFoundText="متن مورد نظر پیدا نشد"
+      [multiSelect]="false"
+      [listItems]="listItems"
+      errorMessage="نمایش خطا"
+    ></app-shared-select-box>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-select-box
+        placeHolder="یکی از موارد را انتخاب کنید"
+        controlName="select1"
+        [searchable]="true"
+        notFoundText="متن مورد نظر پیدا نشد"
+        [multiSelect]="true"
+        [controlForm]="form"
+        [listItems]="listItems"
+      ></app-shared-select-box>
+      <app-shared-select-box
+        placeHolder="یکی از موارد را انتخاب کنید"
+        test="list2"
+        controlName="select2"
+        [searchable]="true"
+        notFoundText="متن مورد نظر پیدا نشد"
+        [multiSelect]="false"
+        [controlForm]="form"
+        [listItems]="listItems"
+      ></app-shared-select-box>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Check Box Example</h1>
+
+    <app-shared-check-box
+      [(checkBoxList)]="checkBoxExampleDataOne"
+      [(listOfValue)]="listOfValueExampleDataOne"
+      errorMessage="نمایش خطا"
+    ></app-shared-check-box>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-check-box
+        [(checkBoxList)]="checkBoxExampleDataTwo"
+        [controlForm]="form"
+        controlName="checkBox1"
+      ></app-shared-check-box>
+
+      <app-shared-check-box
+        [(checkBoxList)]="checkBoxExampleDataThree"
+        [controlForm]="form"
+        controlName="checkBox2"
+      ></app-shared-check-box>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Uploader Example</h1>
+    <app-shared-uploader
+      [progress]="progress"
+      [prevAvatar]="prevAvatar"
+      (onErrorMessage)="setErrorMessage($event)"
+      (onUploadFile)="uploadFile($event)"
+    ></app-shared-uploader>
+  </div>
+
+  <div>
+    <h1>Shared Auto Complete Example</h1>
+
+    <app-shared-auto-complete
+      [request]="autoCompleteOneRequest"
+      requestType="GET"
+      bindValue="id"
+      bindLabel="title"
+      [(value)]="autoCompleteValueOneList"
+      loadingText="در حال جستجو ..."
+      typeToSearchText="حداقل دو کارکتر وارد نمایید"
+      placeHolder="یکی از موارد را انتخاب کنید"
+      [searchable]="true"
+      notFoundText="داده مورد نظر پیدا نشد"
+      [multiSelect]="false"
+      errorMessage="نمایش خطا"
+    ></app-shared-auto-complete>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-auto-complete
+        [request]="autoCompleteTwoRequest"
+        requestType="GET"
+        bindValue="id"
+        bindLabel="title"
+        loadingText="در حال جستجو ..."
+        typeToSearchText="حداقل دو کارکتر وارد نمایید"
+        placeHolder="یکی از موارد را انتخاب کنید"
+        [searchable]="true"
+        notFoundText="داده مورد نظر پیدا نشد"
+        errorMessage="نمایش خطا"
+        controlName="autoOne"
+        [multiSelect]="true"
+        [controlForm]="form"
+      ></app-shared-auto-complete>
+      <app-shared-auto-complete
+        [request]="autoCompleteThreeRequest"
+        requestType="GET"
+        bindValue="id"
+        bindLabel="title"
+        loadingText="در حال جستجو ..."
+        typeToSearchText="حداقل دو کارکتر وارد نمایید"
+        placeHolder="یکی از موارد را انتخاب کنید"
+        [searchable]="true"
+        notFoundText="داده مورد نظر پیدا نشد"
+        errorMessage="نمایش خطا"
+        controlName="autoTwo"
+        [multiSelect]="true"
+        [controlForm]="form"
+      ></app-shared-auto-complete>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Date Picker Example</h1>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-datepicker
+        mode="range"
+        startLabel="تاریخ شروع"
+        endLabel="تاریخ پایان"
+        endInputName="dateOneEnd"
+        startInputName="dateOneStart"
+        [inputForm]="form"
+        startPlaceholder="تاریخ شروع"
+        endPlaceholder="تاریخ پایان"
+      ></app-shared-datepicker>
+
+      <app-shared-datepicker
+        mode="single"
+        startLabel="تاریخ "
+        startInputName="dateTwo"
+        [inputForm]="form"
+        startPlaceholder="تاریخ "
+      ></app-shared-datepicker>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+</div>
+
+<div class="example">
+  <h1>Loading Value: {{ httpLoaderService.loadingState }}</h1>
+  <div>
+    <h1>State Example</h1>
+    <div>
+      <span i18n>تاریخ: </span>
+
+      <span>{{ "05/12/2023" | date }}</span>
+    </div>
+
+    <div>
+      <span i18n>قیمت: </span>
+
+      <span>{{ 123568 | currency }}</span>
+    </div>
+    <h2>See state in other route</h2>
+
+    <span i18n routerLink="/panel/messages"> پیام </span>
+  </div>
+
+  <div>
+    <h1>Shared Input Example</h1>
+
+    <app-shared-input
+      [(value)]="inputTest"
+      placeHolder="تست اینپوت"
+      type="text"
+    ></app-shared-input>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-input
+        [controlForm]="form"
+        controlName="name"
+        placeHolder="نام"
+        type="text"
+      ></app-shared-input>
+
+      <app-shared-input
+        [controlForm]="form"
+        controlName="password"
+        placeHolder="رمزعبور"
+        type="password"
+      ></app-shared-input>
+      <app-shared-button type="submit" title="Submit Form"></app-shared-button>
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Radio Button Example</h1>
+
+    <app-shared-radio
+      [(radioList)]="radioExampleDataOne"
+      errorMessage="نمایش خطا"
+    ></app-shared-radio>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-radio
+        [(radioList)]="radioExampleDataTwo"
+        [controlForm]="form"
+        controlName="radio1"
+      ></app-shared-radio>
+
+      <app-shared-radio
+        [(radioList)]="radioExampleDataThree"
+        [controlForm]="form"
+        controlName="radio2"
+      ></app-shared-radio>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Select Box Example</h1>
+    <app-shared-select-box
+      [(value)]="selectBoxValue"
+      placeHolder="یکی از موارد را انتخاب کنید"
+      [searchable]="true"
+      notFoundText="متن مورد نظر پیدا نشد"
+      [multiSelect]="false"
+      [listItems]="listItems"
+      errorMessage="نمایش خطا"
+    ></app-shared-select-box>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-select-box
+        placeHolder="یکی از موارد را انتخاب کنید"
+        controlName="select1"
+        [searchable]="true"
+        notFoundText="متن مورد نظر پیدا نشد"
+        [multiSelect]="true"
+        [controlForm]="form"
+        [listItems]="listItems"
+      ></app-shared-select-box>
+      <app-shared-select-box
+        placeHolder="یکی از موارد را انتخاب کنید"
+        test="list2"
+        controlName="select2"
+        [searchable]="true"
+        notFoundText="متن مورد نظر پیدا نشد"
+        [multiSelect]="false"
+        [controlForm]="form"
+        [listItems]="listItems"
+      ></app-shared-select-box>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Check Box Example</h1>
+
+    <app-shared-check-box
+      [(checkBoxList)]="checkBoxExampleDataOne"
+      [(listOfValue)]="listOfValueExampleDataOne"
+      errorMessage="نمایش خطا"
+    ></app-shared-check-box>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-check-box
+        [(checkBoxList)]="checkBoxExampleDataTwo"
+        [controlForm]="form"
+        controlName="checkBox1"
+      ></app-shared-check-box>
+
+      <app-shared-check-box
+        [(checkBoxList)]="checkBoxExampleDataThree"
+        [controlForm]="form"
+        controlName="checkBox2"
+      ></app-shared-check-box>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Uploader Example</h1>
+    <app-shared-uploader
+      [progress]="progress"
+      [prevAvatar]="prevAvatar"
+      (onErrorMessage)="setErrorMessage($event)"
+      (onUploadFile)="uploadFile($event)"
+    ></app-shared-uploader>
+  </div>
+
+  <div>
+    <h1>Shared Auto Complete Example</h1>
+
+    <app-shared-auto-complete
+      [request]="autoCompleteOneRequest"
+      requestType="GET"
+      bindValue="id"
+      bindLabel="title"
+      [(value)]="autoCompleteValueOneList"
+      loadingText="در حال جستجو ..."
+      typeToSearchText="حداقل دو کارکتر وارد نمایید"
+      placeHolder="یکی از موارد را انتخاب کنید"
+      [searchable]="true"
+      notFoundText="داده مورد نظر پیدا نشد"
+      [multiSelect]="false"
+      errorMessage="نمایش خطا"
+    ></app-shared-auto-complete>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-auto-complete
+        [request]="autoCompleteTwoRequest"
+        requestType="GET"
+        bindValue="id"
+        bindLabel="title"
+        loadingText="در حال جستجو ..."
+        typeToSearchText="حداقل دو کارکتر وارد نمایید"
+        placeHolder="یکی از موارد را انتخاب کنید"
+        [searchable]="true"
+        notFoundText="داده مورد نظر پیدا نشد"
+        errorMessage="نمایش خطا"
+        controlName="autoOne"
+        [multiSelect]="true"
+        [controlForm]="form"
+      ></app-shared-auto-complete>
+      <app-shared-auto-complete
+        [request]="autoCompleteThreeRequest"
+        requestType="GET"
+        bindValue="id"
+        bindLabel="title"
+        loadingText="در حال جستجو ..."
+        typeToSearchText="حداقل دو کارکتر وارد نمایید"
+        placeHolder="یکی از موارد را انتخاب کنید"
+        [searchable]="true"
+        notFoundText="داده مورد نظر پیدا نشد"
+        errorMessage="نمایش خطا"
+        controlName="autoTwo"
+        [multiSelect]="true"
+        [controlForm]="form"
+      ></app-shared-auto-complete>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Shared Date Picker Example</h1>
+
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="logForm()">
+      <app-shared-datepicker
+        mode="range"
+        startLabel="تاریخ شروع"
+        endLabel="تاریخ پایان"
+        endInputName="dateOneEnd"
+        startInputName="dateOneStart"
+        [inputForm]="form"
+        startPlaceholder="تاریخ شروع"
+        endPlaceholder="تاریخ پایان"
+      ></app-shared-datepicker>
+
+      <app-shared-datepicker
+        mode="single"
+        startLabel="تاریخ "
+        startInputName="dateTwo"
+        [inputForm]="form"
+        startPlaceholder="تاریخ "
+      ></app-shared-datepicker>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<main class="login-container">
+  <div class="login-container__left">
+    <div class="title-box">
+      <h1 class="title-page">Sign in</h1>
+      <h3 class="subtitle-page">Welcome to FMS</h3>
+    </div>
+    <form class="form-box" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+      <app-shared-input label="Email" type="text" icon="user" placeHolder="Test@gmail.com" controlName="email"
+        [controlForm]="loginForm"></app-shared-input>
+      <app-shared-input label="Password" type="password" icon="lock" placeHolder="At least 8 symbols"
+        controlName="password" [controlForm]="loginForm"></app-shared-input>
+
+      <app-shared-button type="submit" [disabled]="loginForm.invalid" [isPending]="isPending"
+        title="Login"></app-shared-button>
+    </form>
+    <span class="forget-password" routerLink="auth/login">Forget Password?</span>
+    <div class="text-left">
+      <svg-icon key="signpost" color="#1c846a" fontSize="18px"></svg-icon>
+      <span class="change-language">
+        تغییر به زبان فارسی
+      </span>
+    </div>
+  </div>
+
+  <div class="login-container__right">
+
+  </div>
+</main>
