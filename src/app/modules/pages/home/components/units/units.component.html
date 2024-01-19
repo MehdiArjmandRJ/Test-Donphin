@@ -1,0 +1,13 @@
+<div class="car-list__header">
+  <div class="left">
+      <app-shared-input placeHolder="Search" type="text" icon="search-normal" [value]="searchValue"
+          (valueChange)="onSearchInDataTable()" prefixIcon="setting-2"></app-shared-input>
+  </div>
+  <div class="right">
+      <app-shared-button icon="add" color="second" title="Add Unit"></app-shared-button>
+      <app-shared-button icon="grid-7" [outline]="true" title="" iconColor="#ccc"></app-shared-button>
+  </div>
+</div>
+<div class="car-list__table">
+  <!-- <app-ag-grid></app-ag-grid> -->
+</div>

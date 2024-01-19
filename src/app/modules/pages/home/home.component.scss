@@ -1,20 +1,22 @@
-.flex-33 {
-    flex: 0 1 33.33%;
-    width: 33.33%;
+@import "./../../../../theme/index";
 
-    +.flex-33 {
-        margin-right: 4px;
+.car-list {
+    &__tab-list {}
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+            
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
     }
-}
-
-.middle-conatiner {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 0 8px 4px 8px;
-}
-
-.white-box {
-    background: #fff;
-    height: 100%;
-    width: 100%;
 }

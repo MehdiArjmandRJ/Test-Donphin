@@ -11,6 +11,7 @@ import { moneyIcons } from './icons/Money';
 import { notificationsIcons } from './icons/Notifications';
 import { searchIcons } from './icons/Search';
 import { securityIcons } from './icons/Security';
+import { settingsIcons } from './icons/Settings';
 import { shopIcons } from './icons/Shop';
 import { supportLikeQuestionIcons } from './icons/Support-Like-Question';
 import { usersIcons } from './icons/Users';
@@ -32,6 +33,7 @@ import { usersIcons } from './icons/Users';
       ...computersDevicesElectronicsIcons,
       ...securityIcons,
       ...searchIcons,
+      ...settingsIcons
     ]),
   ],
   imports: [

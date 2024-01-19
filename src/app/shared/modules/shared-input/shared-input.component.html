@@ -26,13 +26,17 @@
           stroke-linecap="round" stroke-linejoin="round" />
       </svg> -->
     </div>
+
+    <div *ngIf="prefixIcon" class="icon pw-icon">
+      <svg-icon [key]="prefixIcon" fontSize="18px"></svg-icon>
+    </div>
   </div>
 
   <ng-template #useNgModel>
     <div class="main-input__box">
-    <label class="label" for="value">{{label}}</label>
-      <input [name]="value" [type]="getVisiblePassword ? 'text' : type" [placeholder]="placeHolder" [(ngModel)]="value"
-        (change)="onChangeValue($event)" />
+      <label class="label" for="value">{{label}}</label>
+      <input [name]="value" class="input" [type]="getVisiblePassword ? 'text' : type" [placeholder]="placeHolder"
+        [(ngModel)]="value" (change)="onChangeValue($event)" />
 
       <div class="icon">
         <svg-icon [key]="icon" fontSize="18px"></svg-icon>
@@ -43,9 +47,13 @@
         class="visible-password-icon">
         <svg-icon *ngIf="getVisiblePassword;else hiddenPasswordIcon" key="eye-slash" fontSize="18px"></svg-icon>
 
-      <ng-template #hiddenPasswordIcon>
-        <svg-icon key="eye" fontSize="18px"></svg-icon>
-      </ng-template>
+        <ng-template #hiddenPasswordIcon>
+          <svg-icon key="eye" fontSize="18px"></svg-icon>
+        </ng-template>
+      </div>
+
+      <div *ngIf="prefixIcon" class="icon prefix-icon">
+        <svg-icon [key]="prefixIcon" fontSize="18px"></svg-icon>
       </div>
     </div>
   </ng-template>

@@ -8,6 +8,7 @@
   padding: 8px 16px;
   direction: rtl;
   border-radius: 8px;
+  direction: ltr;
   cursor: pointer;
 
   &__title{
@@ -18,6 +19,12 @@
     color: #fff;
     font-weight: 900;
   }
+  &--second{
+    background:  #f6921c;
+    color: #fff;
+    font-weight: 900;
+  }
+  
   &--danger {
     background: #e20613;
     outline: 0;
@@ -47,6 +54,13 @@
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
+  }
+
+  &--outline{
+    background:  transparent;
+    color: #ccc;
+    border: 1px solid #ccc;
+    font-weight: 900;
   }
 
   &--disabled {

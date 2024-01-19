@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 //Modules
 import { FormsModule } from '@angular/forms';
-import { AgGridComponent, IconsModule, SharedButtonComponent } from '@app/shared/modules';
+import { AgGridComponent, IconsModule, SharedButtonComponent, SharedInputComponent } from '@app/shared/modules';
 import { AgGridModule } from 'ag-grid-angular';
 
 //Component
@@ -14,6 +14,8 @@ import { HomeComponent } from './home.component';
 //Respository
 
 //Routing
+import { TabListComponent } from '@app/shared/modules/tab-list/tab-list.component';
+import { CameraManagementComponent, UnitsComponent, UnitTagComponent } from './components';
 import { HomeRoutingModule } from './home-routing.module';
 
 
@@ -26,9 +28,15 @@ import { HomeRoutingModule } from './home-routing.module';
     FormsModule,
     AgGridComponent,
     AgGridModule,
+    SharedInputComponent,
+    TabListComponent,
+
   ],
   declarations: [
     HomeComponent,
+    UnitsComponent,
+    UnitTagComponent,
+    CameraManagementComponent
   ]
 })
 export class HomeModule { }

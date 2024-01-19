@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconsModule } from '../custom-icons/icons.module';
 
 @Component({
@@ -21,6 +21,7 @@ export class SharedButtonComponent {
   @Input() color = 'primary';
   @Input() loadingSrc = 'primary';
   @Input() icon: any;
+  @Input() iconColor: string='#fff';
 
   @Output() onClick: EventEmitter<unknown> = new EventEmitter();
 

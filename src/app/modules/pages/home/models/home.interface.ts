@@ -1,22 +1,21 @@
-export interface IndicatorsInterface {
+export interface ITabList {
   title: string;
-  value: string;
-  percent: string;
-  count: string;
-  interestRate: boolean;
+  active: boolean;
+  component: any;
 }
 
-export interface MarketIndexInterface {
-  dateReceived: string;
-  eventDate: string;
-  eventTime: number;
-  faInsName: string;
-  flow: number;
-  id: number;
-  indexChanges: number;
-  insKey: string;
-  instrumentId: string;
-  lastIndexValue: number;
-  percentVariation: number;
-  tmcCode: number;
+export interface ITableList {
+  icon: string;
+  unitTittle: string;
+  connectStatus: string;
+  IMEI: string;
+  Tags: string;
+  LastTimePoint: string;
+}
+
+export interface IHomePage {
+  tabList: ITabList[];
+  tableListData: ITableList[];
+  initialTabListData(): void;
+  initialTableListData(): void;
 }

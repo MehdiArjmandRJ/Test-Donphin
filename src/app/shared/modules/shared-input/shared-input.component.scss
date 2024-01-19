@@ -1,36 +1,45 @@
 @import "./../../../../theme/settings";
-.main-input{
-    &__box{
+
+.main-input {
+    &__box {
         position: relative;
         width: 100%;
-        .label{
+        display: flex;
+        flex-direction: column;
+
+        .label {
             color: $black;
             font-size: 14px;
             padding-bottom: 0.3rem;
             display: block;
         }
-        .input{
+
+        .input {
             min-height: 26px;
             padding: 4px 8px;
-            width: 90%;
             border: 1px solid $gray;
             padding-left: 2rem;
         }
 
-        .icon{
+        .icon {
             position: absolute;
             bottom: 9px;
             left: 6px;
         }
 
-        .pw-icon{
+        .pw-icon {
             left: auto;
             right: 6px;
             cursor: pointer;
         }
+
+        .prefix-icon {
+            left: auto;
+            right: 6px;
+        }
     }
 
-    &__error-container{
+    &__error-container {
         font-size: 10px;
         color: red;
     }

@@ -1,0 +1,9 @@
+<div class="tabs">
+  <div class="tabs__header" *ngFor="let tab of tabListData;let index=index">
+    <span class="tab-item" [ngClass]="{'active':tab.active}" (click)="changeTab(index)">{{tab.title}}</span>
+  </div>
+  <ng-container *ngIf="componentActiveTab" [ngTemplateOutlet]="componentActiveTab"
+    [ngTemplateOutletContext]="dynamicDataContext"></ng-container>
+
+  <!-- <ng-template [ngComponentOutlet]="componentActiveTab; context: dynamicDataContext"></ng-template> -->
+</div>

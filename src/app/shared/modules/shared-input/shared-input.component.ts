@@ -23,6 +23,7 @@ export class SharedInputComponent   {
   private visiblePassword = false;
 
   @Input() label!:string;
+  @Input() prefixIcon!:string;
   @Input() icon!:string;
   @Input() type!:string;
   @Input() placeHolder!:string;
