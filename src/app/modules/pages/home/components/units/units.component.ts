@@ -18,6 +18,7 @@ export class UnitsComponent implements OnInit {
   entityCount: number = 0;
   rowsPerPage = [10, 25, 50, 100];
   carList: ITableList[] = tableDataList;
+  dataList:ITableList[] = [];
   PageSize: number = 10;
   PageIndex: number = 1;
   constructor(@Inject('dataToPass') public dynamicData: any,
@@ -25,6 +26,7 @@ export class UnitsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.onSearchInDataTable('')
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -33,8 +35,9 @@ export class UnitsComponent implements OnInit {
   }
 
 
-  onSearchInDataTable(): void {
-    console.log(this.searchValue);
+  onSearchInDataTable(event:any): void {
+    this.dataList= []
+   this.carList.forEach((data:ITableList)=> data.unitTittle.includes(event) ? this.dataList.push(data): null)
   }
 
   onPageChange(event:any) {
