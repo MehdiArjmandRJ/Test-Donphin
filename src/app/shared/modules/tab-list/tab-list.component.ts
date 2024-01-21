@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Injector, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ITabList } from '@app/modules/pages/home/models/home.interface';
 import { ITabListComponent } from './models/tab-list.interface';
 
@@ -12,12 +12,13 @@ import { ITabListComponent } from './models/tab-list.interface';
 })
 export class TabListComponent implements ITabListComponent, OnInit {
   componentActiveTab: any;
+  dynamicComponentInjectorValue!: Injector;
 
   @Input() data: any;
   @Input() tabListData!: ITabList[];
   // dynamicDataContext: { $implicit: any } = { $implicit: null };
 
-  @ViewChild('dynamicDataContext', { read: TemplateRef }) dynamicDataContext: any;
+  @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
 
   constructor(
     private injector: Injector,
@@ -25,7 +26,7 @@ export class TabListComponent implements ITabListComponent, OnInit {
 
   ngOnInit() {
     this.initialActiveTabComponent();
-    this.createInjectorData();
+    this.dynamicComponentInjectorValue = this.dynamicComponentInjector();
   }
 
   changeTab(index: number): void {
@@ -45,16 +46,14 @@ export class TabListComponent implements ITabListComponent, OnInit {
     })
   }
 
-
-  createInjectorData(): void {
-    const dynamicInjector = Injector.create({
+  dynamicComponentInjector() {
+    const injector = Injector.create({
       providers: [
-        { provide: 'dynamicContext', useValue: this.data },
+        { provide: 'dataToPass', useValue: this.data },
       ],
-      parent: this.injector,
+      parent: this.dynamicComponentContainer?.injector,
     });
-    this.dynamicDataContext = dynamicInjector;
-
+    return injector;
   }
 
 }

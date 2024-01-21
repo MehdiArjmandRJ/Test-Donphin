@@ -22,51 +22,57 @@ export const tabListData = [
 
 export const tableDataList = [
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
     {
-        icon: './../../../../../assets/icons/3.0x/ic_unit1.png',
+        icon: '<img src="./../../../../../assets/icons/3.0x/ic_unit1.png" >',
         unitTittle: 'Unit 010000',
         connectStatus: 'Conected',
         IMEI: '123456789',
         Tags: 'Service',
-        LastTimePoint: '15 m ago'
+        LastTimePoint: '15 m ago',
+        more:'...'
     },
 ]

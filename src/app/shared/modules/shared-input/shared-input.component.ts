@@ -25,6 +25,7 @@ export class SharedInputComponent   {
   @Input() label!:string;
   @Input() prefixIcon!:string;
   @Input() icon!:string;
+  @Input() iconSize:string = '18px';
   @Input() type!:string;
   @Input() placeHolder!:string;
   /**  @howToUse Using: use Reactive Forms */

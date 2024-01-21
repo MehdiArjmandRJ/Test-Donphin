@@ -1,0 +1,24 @@
+.tabs {
+  padding: 1rem 0.5rem;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #9b9090;
+    .tab-item {
+      cursor: pointer;
+      padding-bottom: 0.4rem;
+      min-width: 150px;
+      text-align: center;
+      text-wrap: nowrap;
+    }
+  }
+
+  .active {
+    border-bottom: 2px solid #f6921c;
+    box-shadow: 0 1px 0 0 #f6921c;
+    text-align: center;
+  }
+}

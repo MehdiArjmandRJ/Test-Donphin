@@ -1,6 +1,6 @@
 <div class="car-list__header">
   <div class="left">
-      <app-shared-input placeHolder="Search" type="text" icon="search-normal" [value]="searchValue"
+      <app-shared-input placeHolder="Search" type="text" iconSize="14px" icon="search-normal" [value]="searchValue"
           (valueChange)="onSearchInDataTable()" prefixIcon="setting-2"></app-shared-input>
   </div>
   <div class="right">
@@ -9,5 +9,15 @@
   </div>
 </div>
 <div class="car-list__table">
-  <!-- <app-ag-grid></app-ag-grid> -->
+  <div class="transaction__content">
+    <ag-grid-angular rowSelection="multiple" style="width: 100%;" class="ag-theme-alpine" [columnDefs]="carGridService.columns" [rowData]="carList"
+      [gridOptions]="carGridService.gridOptions" [enableRtl]="false" [pagination]="true" [paginationPageSize]="PageSize"  [suppressPaginationPanel]="true" [enableCellTextSelection]="true"
+      [enableCellChangeFlash]="false" [alwaysShowHorizontalScroll]="true" [rowHeight]="41" [animateRows]="false" [noRowsOverlayComponent]="carGridService.noRowsOverlayComponent"
+       (gridReady)="onGridReady($event)" />
+  </div>
+  <!-- begin::Grid Pagination -->
+  <div class="d-flex">
+    <!-- <p-paginator class="w-100" styleClass="paginator" dir="ltr" [showFirstLastIcon]="false" [showCurrentPageReport]="true" (onPageChange)="onPageChange($event)" [totalRecords]="entityCount"
+      [rowsPerPageOptions]="rowsPerPage" currentPageReportTemplate="تعداد کل: {totalRecords}" /> -->
+  </div>
 </div>

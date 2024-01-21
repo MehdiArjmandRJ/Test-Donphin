@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AgGridComponent, IconsModule, SharedButtonComponent, SharedInputComponent } from '@app/shared/modules';
 import { AgGridModule } from 'ag-grid-angular';
+import { PaginatorModule } from 'primeng/paginator';
 
 //Component
 import { HomeComponent } from './home.component';
@@ -29,7 +30,7 @@ import { HomeRoutingModule } from './home-routing.module';
     AgGridComponent,
     AgGridModule,
     SharedInputComponent,
-    TabListComponent,
+    TabListComponent,PaginatorModule
 
   ],
   declarations: [

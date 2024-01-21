@@ -5,7 +5,7 @@
       [formControlName]="controlName" />
 
     <div class="icon">
-      <svg-icon [key]="icon" fontSize="18px"></svg-icon>
+      <svg-icon [key]="icon" [fontSize]="iconSize"></svg-icon>
     </div>
 
     <div [attr.aria-hidden]="getCheckType" *ngIf="getCheckType" (click)="onClickToggleVisiblePassword()"
@@ -13,7 +13,7 @@
       <svg-icon *ngIf="getVisiblePassword;else hiddenPasswordIcon" key="eye-slash" fontSize="18px"></svg-icon>
 
       <ng-template #hiddenPasswordIcon>
-        <svg-icon key="eye" fontSize="18px"></svg-icon>
+        <svg-icon key="eye" [fontSize]="iconSize"></svg-icon>
       </ng-template>
       <!-- <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.75 12.75V8.25L5.25 9.75" stroke="#616161" stroke-width="1.5" stroke-linecap="round"
@@ -28,7 +28,7 @@
     </div>
 
     <div *ngIf="prefixIcon" class="icon pw-icon">
-      <svg-icon [key]="prefixIcon" fontSize="18px"></svg-icon>
+      <svg-icon [key]="prefixIcon" [fontSize]="iconSize"></svg-icon>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
         [(ngModel)]="value" (change)="onChangeValue($event)" />
 
       <div class="icon">
-        <svg-icon [key]="icon" fontSize="18px"></svg-icon>
+        <svg-icon [key]="icon" [fontSize]="iconSize"></svg-icon>
 
       </div>
 
@@ -48,12 +48,12 @@
         <svg-icon *ngIf="getVisiblePassword;else hiddenPasswordIcon" key="eye-slash" fontSize="18px"></svg-icon>
 
         <ng-template #hiddenPasswordIcon>
-          <svg-icon key="eye" fontSize="18px"></svg-icon>
+          <svg-icon key="eye" [fontSize]="iconSize"></svg-icon>
         </ng-template>
       </div>
 
       <div *ngIf="prefixIcon" class="icon prefix-icon">
-        <svg-icon [key]="prefixIcon" fontSize="18px"></svg-icon>
+        <svg-icon [key]="prefixIcon" [fontSize]="iconSize"></svg-icon>
       </div>
     </div>
   </ng-template>
